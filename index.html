@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DubGenix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .timeline-item {
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: translateX(-50%);
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .timeline-item::before {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center cursor-pointer" onclick="scrollToTop()">
+                    <i class="fas fa-microphone text-purple-600 text-2xl mr-2"></i>
+                    <span class="text-xl font-semibold text-gray-900 hover:text-purple-600 transition-colors">DubGenix</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#overview" class="text-gray-600 hover:text-purple-600 transition-colors relative group">
+                        Overview
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#objectives" class="text-gray-600 hover:text-purple-600 transition-colors relative group">
+                        Objectives
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#architecture" class="text-gray-600 hover:text-purple-600 transition-colors relative group">
+                        Architecture
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#technologies" class="text-gray-600 hover:text-purple-600 transition-colors relative group">
+                        Technologies
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <i class="fas fa-language text-6xl mb-6"></i>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    Real-Time English to Sinhala Dubbing System
+                </h1>
+                <p class="text-xl md:text-2xl mb-2 opacity-90">
+                    Final Year Project | University of Moratuwa
+                </p>
+                <p class="text-lg opacity-80">
+                    Supervised by Dr. Uthayasanker Thayasivam
+                </p>
+            </div>
+            <a href="Final_Year_Project_Proposal.pdf" target="_blank" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                <i class="fas fa-file-pdf mr-2"></i>
+                See Project PDF
+            </a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Project Overview</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">The Challenge</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        In Sri Lanka, where Sinhala is the primary language, there's a significant gap in multilingual accessibility. 
+                        While English content is abundant, Sinhala speakers often rely on subtitles, which can be distracting and 
+                        limit accessibility for those with reading difficulties.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Current solutions focus primarily on subtitles, but real-time dubbing remains largely unexplored, 
+                        especially for low-resource languages like Sinhala.
+                    </p>
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-purple-900 mb-2">Our Goal</h4>
+                        <p class="text-purple-800">
+                            Develop a real-time system that can dub English videos to Sinhala, providing natural and 
+                            intelligible speech output for better accessibility.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-pink-100 p-8 rounded-2xl">
+                    <div class="text-center">
+                        <i class="fas fa-globe text-6xl text-purple-600 mb-4"></i>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Multilingual Accessibility</h4>
+                        <p class="text-gray-600">
+                            Bridging the language gap in Sri Lanka through innovative AI-powered dubbing technology
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section id="objectives" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Project Objectives</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="text-center">
+                        <i class="fas fa-robot text-4xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">AI-Powered Dubbing</h3>
+                        <p class="text-gray-600">Advanced machine learning models for English-to-Sinhala translation and synthesis</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="text-center">
+                        <i class="fas fa-volume-up text-4xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Natural Speech</h3>
+                        <p class="text-gray-600">Generate natural and intelligible Sinhala speech output</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="text-center">
+                        <i class="fas fa-users text-4xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Multi-Speaker Support</h3>
+                        <p class="text-gray-600">Support for multiple speakers and emotional tone variations</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="text-center">
+                        <i class="fas fa-bolt text-4xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Real-Time Processing</h3>
+                        <p class="text-gray-600">Optimized pipeline for real-time audio processing and dubbing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Architecture Section -->
+    <section id="architecture" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">System Architecture</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+                <p class="text-gray-600 mt-4">Three-phase development approach for comprehensive dubbing system</p>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Phase 1 -->
+                <div class="timeline-item">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="md:order-2">
+                            <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <i class="fas fa-check text-sm"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Phase 1 – Core Dubbing Pipeline</h3>
+                                </div>
+                                <ul class="space-y-3 text-gray-700">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-music text-green-600 mr-3"></i>
+                                        Audio extraction and preprocessing
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-filter text-green-600 mr-3"></i>
+                                        Noise removal and enhancement
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-microphone text-green-600 mr-3"></i>
+                                        ASR with ABC_ASR
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-language text-green-600 mr-3"></i>
+                                        MT with NLLB-1.3B
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-volume-up text-green-600 mr-3"></i>
+                                        TTS with XTTS
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-link text-green-600 mr-3"></i>
+                                        Merging dubbed audio
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="md:order-1">
+                            <div class="text-center">
+                                <i class="fas fa-cogs text-6xl text-green-600 mb-4"></i>
+                                <h4 class="text-xl font-semibold text-gray-900 mb-2">Foundation</h4>
+                                <p class="text-gray-600">Building the core pipeline for audio processing, translation, and synthesis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="timeline-item">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <i class="fas fa-bolt text-sm"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Phase 2 – Real-Time Dubbing</h3>
+                                </div>
+                                <ul class="space-y-3 text-gray-700">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-stream text-blue-600 mr-3"></i>
+                                        Audio chunking and streaming
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-network-wired text-blue-600 mr-3"></i>
+                                        WebSocket-based pipeline
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-tachometer-alt text-blue-600 mr-3"></i>
+                                        Latency optimization
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-clock text-blue-600 mr-3"></i>
+                                        Real-time processing
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-center">
+                                <i class="fas fa-rocket text-6xl text-blue-600 mb-4"></i>
+                                <h4 class="text-xl font-semibold text-gray-900 mb-2">Performance</h4>
+                                <p class="text-gray-600">Optimizing for real-time processing with minimal latency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="timeline-item">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="md:order-2">
+                            <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                                        <i class="fas fa-brain text-sm"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Phase 3 – Advanced AI Features</h3>
+                                </div>
+                                <ul class="space-y-3 text-gray-700">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-user-friends text-purple-600 mr-3"></i>
+                                        Speaker Diarization
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-clone text-purple-600 mr-3"></i>
+                                        Voice Cloning
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-smile text-purple-600 mr-3"></i>
+                                        Emotion Detection
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-magic text-purple-600 mr-3"></i>
+                                        Advanced AI integration
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="md:order-1">
+                            <div class="text-center">
+                                <i class="fas fa-robot text-6xl text-purple-600 mb-4"></i>
+                                <h4 class="text-xl font-semibold text-gray-900 mb-2">Intelligence</h4>
+                                <p class="text-gray-600">Advanced AI features for enhanced user experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technologies Used</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- AI/ML Technologies -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-brain text-purple-600 mr-2"></i>
+                        AI & Machine Learning
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
+                            <span class="font-medium">ASR</span>
+                            <span class="text-purple-600 font-semibold">ABC_ASR</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
+                            <span class="font-medium">MT</span>
+                            <span class="text-purple-600 font-semibold">Meta NLLB-1.3B</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
+                            <span class="font-medium">TTS</span>
+                            <span class="text-purple-600 font-semibold">XTTS, Bark</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
+                            <span class="font-medium">Voice AI</span>
+                            <span class="text-purple-600 font-semibold">Resemble.ai</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio/Video Technologies -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-video text-blue-600 mr-2"></i>
+                        Audio & Video
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium">Processing</span>
+                            <span class="text-blue-600 font-semibold">FFmpeg</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium">Streaming</span>
+                            <span class="text-blue-600 font-semibold">WebSocket</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium">Audio</span>
+                            <span class="text-blue-600 font-semibold">WAV, MP3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Development Tools -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-tools text-green-600 mr-2"></i>
+                        Development Tools
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium">Frontend</span>
+                            <span class="text-green-600 font-semibold">HTML, JS, Tailwind</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium">Containerization</span>
+                            <span class="text-green-600 font-semibold">Docker</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium">Version Control</span>
+                            <span class="text-green-600 font-semibold">GitHub</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium">Documentation</span>
+                            <span class="text-green-600 font-semibold">Mermaid.js, Draw.io</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Team</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+                <p class="text-gray-600 mt-4">Meet the talented developers behind DubGenix</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Haritha -->
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Haritha</h3>
+                    <p class="text-gray-600 text-sm">Team Member</p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visitha -->
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Visitha</h3>
+                    <p class="text-gray-600 text-sm">Team Member</p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Oshadi -->
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-emerald-400 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Oshadi</h3>
+                    <p class="text-gray-600 text-sm">Team Member</p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hana -->
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-400 to-orange-400 flex items-center justify-center">
+                        <i class="fas fa-user text-4xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Hana</h3>
+                    <p class="text-gray-600 text-sm">Team Member</p>
+                    <div class="flex justify-center space-x-3 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What We Learned</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl">
+                    <div class="text-center">
+                        <i class="fas fa-language text-4xl text-yellow-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Low-Resource Language Challenges</h3>
+                        <p class="text-gray-600">
+                            Understanding the complexities of working with Sinhala as a low-resource language, 
+                            including limited training data and specialized model requirements.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl">
+                    <div class="text-center">
+                        <i class="fas fa-cogs text-4xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Full ML Pipeline Development</h3>
+                        <p class="text-gray-600">
+                            Building complete machine learning pipelines from data preprocessing to model deployment, 
+                            integrating multiple AI components seamlessly.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl">
+                    <div class="text-center">
+                        <i class="fas fa-tachometer-alt text-4xl text-green-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Real-Time System Design</h3>
+                        <p class="text-gray-600">
+                            Designing systems for real-time processing, understanding latency requirements, 
+                            and optimizing for performance while maintaining quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <i class="fas fa-graduation-cap text-4xl text-purple-400 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Real-Time English to Sinhala Dubbing System</h3>
+                <p class="text-gray-400">Final Year Project- Group DubGenix | University of Moratuwa</p>
+            </div>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-gray-400">
+                    Made with <i class="fas fa-heart text-red-500"></i> by Group DubGenix
+                </p>
+                <p class="text-gray-500 text-sm mt-2">© 2025 Group DubGenix All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth scrolling JavaScript -->
+    <script>
+        // Function to scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // Add animation on scroll for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html> 
